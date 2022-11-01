@@ -12,6 +12,7 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "orchid/platform": "10.3.0",
+        "slavkluev/bizon365-api-php": "^1.1",
         "ufee/amoapi": "0.9.3.1"
     },
     "require-dev": {

@@ -44,11 +44,14 @@ class AmoAccessController extends Controller
         ]);
     }
 
-    public function showAccount(Request $request){
+//    public function showAccount(Request $request){
 
-        $request = $request->all();
+//        $request = $request->all();
+//        $domain = $request['domain'];
+//
+//        $ufee = $this->getAmoCRM($domain);
 
-        var_dump($request);
-//        return $request;
-    }
+//        dd($ufee->account);
+//        return $ufee;
+//    }
 }

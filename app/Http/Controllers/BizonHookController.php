@@ -28,12 +28,12 @@ class BizonHookController extends BizonAccessController
         else return false;
     }
 
-    public function takeHookLitelly(Request $request){
+    public function takeHookMatrix(Request $request){
 
         $request = $request->all();
 
         $hook = BizonHook::create([
-            'domain_amo' => 'litelly',
+            'domain_amo' => 'uoppoly_matrix',
             'event' => $request['event'],
             'room_id' => $request['roomid'],
             'webinar_id' => $request['webinarId'],
@@ -50,8 +50,14 @@ class BizonHookController extends BizonAccessController
         foreach ($hooks as $hook){
 
             try {
+                //если в строке амо есть поддомен, нужно его обрезать, пример uoppoly_matrix
+                $check_domain = stristr($hook['domain_amo'], '_', true);
 
-                $client = $this->getAccountBizon($hook['domain_amo']);
+                if ($check_domain)
+                    $client = $this->getAccountBizon($check_domain);
+                else
+                    $client = $this->getAccountBizon($hook['domain_amo']);
+
 
                 $webinar_api = $client->getWebinarApi();
                 $webinar_id = $hook['webinar_id'];
